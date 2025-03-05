@@ -1,0 +1,110 @@
+{
+  "device_info": {
+    "device_type": "cisco_ios"
+  },
+  "policies": [
+    {
+      "policy_name": "Secure NTP Configuration",
+      "description": "Ensures that NTP is configured with proper servers and authentication",
+      "severity": "medium",
+      "status": "non_compliant",
+      "details": [
+        {
+          "condition_type": "ntp",
+          "compliant": false,
+          "details": [
+            "Required NTP server '10.1.1.1' not configured",
+            "Required NTP server '10.1.1.2' not configured",
+            "NTP authentication is required but not enabled"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_name": "Secure SNMP Configuration",
+      "description": "Ensures that SNMP is configured securely without default community strings",
+      "severity": "high",
+      "status": "non_compliant",
+      "details": [
+        {
+          "condition_type": "snmp",
+          "compliant": false,
+          "details": [
+            "Forbidden SNMP community string found: 'public'",
+            "SNMP contact is required but not configured"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_name": "Secure User Authentication",
+      "description": "Ensures that user accounts have appropriate privilege levels",
+      "severity": "critical",
+      "status": "non_compliant",
+      "details": [
+        {
+          "condition_type": "users",
+          "compliant": false,
+          "details": [
+            "Forbidden username found: 'admin'"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_name": "Proper Logging Configuration",
+      "description": "Ensures that logging is configured with appropriate levels and servers",
+      "severity": "medium",
+      "status": "non_compliant",
+      "details": [
+        {
+          "condition_type": "logging",
+          "compliant": false,
+          "details": [
+            "Logging level for 'trap' not configured"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_name": "AAA Configuration",
+      "description": "Ensures that AAA is properly configured with TACACS+",
+      "severity": "high",
+      "status": "non_compliant",
+      "details": [
+        {
+          "condition_type": "aaa",
+          "compliant": false,
+          "details": [
+            "TACACS+ authentication is required but not configured",
+            "Required authentication methods not found: group tacacs+, local"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_policies": 5,
+    "compliant": 0,
+    "non_compliant": 5,
+    "not_applicable": 0,
+    "by_severity": {
+      "critical": {
+        "total": 1,
+        "non_compliant": 1
+      },
+      "high": {
+        "total": 2,
+        "non_compliant": 2
+      },
+      "medium": {
+        "total": 2,
+        "non_compliant": 2
+      },
+      "low": {
+        "total": 0,
+        "non_compliant": 0
+      }
+    }
+  }
+}
