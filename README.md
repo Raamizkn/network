@@ -71,8 +71,8 @@ Then navigate to http://localhost:5000 in your web browser.
 
 ## License
 
-MIT
+Proprietary. All rights reserved. This software may not be used, copied, modified, or distributed without explicit written permission from the copyright holder.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. 
+Contributions are subject to the terms of the proprietary license agreement. Please contact the copyright holder before submitting any contributions. 
