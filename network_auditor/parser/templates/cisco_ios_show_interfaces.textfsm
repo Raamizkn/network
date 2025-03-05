@@ -1,0 +1,32 @@
+Value INTERFACE (\S+)
+Value LINK_STATUS (.+?)
+Value PROTOCOL_STATUS (.+?)
+Value HARDWARE_TYPE (.*)
+Value ADDRESS ([a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+)
+Value BIA ([a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+)
+Value DESCRIPTION (.*)
+Value IP_ADDRESS (\d+\.\d+\.\d+\.\d+)
+Value SUBNET_MASK (\d+\.\d+\.\d+\.\d+)
+Value MTU (\d+)
+Value BANDWIDTH (\d+\s+\w+)
+Value DELAY (\d+\s+\w+)
+Value ENCAPSULATION (.+?)
+Value LAST_INPUT (.+?)
+Value LAST_OUTPUT (.+?)
+Value LAST_OUTPUT_HANG (.+?)
+Value QUEUE_STRATEGY (.+?)
+
+Start
+  ^${INTERFACE} is ${LINK_STATUS}
+  ^.*protocol is ${PROTOCOL_STATUS}
+  ^.*Hardware is ${HARDWARE_TYPE}
+  ^.*address is ${ADDRESS}.*bia ${BIA}
+  ^.*Description: ${DESCRIPTION}
+  ^.*Internet address is ${IP_ADDRESS}/${SUBNET_MASK}
+  ^.*MTU ${MTU}.*BW ${BANDWIDTH}
+  ^.*DLY ${DELAY}
+  ^.*Encapsulation ${ENCAPSULATION},
+  ^.*Last input ${LAST_INPUT},
+  ^.*Last output ${LAST_OUTPUT}
+  ^.*Last output hang ${LAST_OUTPUT_HANG}
+  ^.*queue strategy: ${QUEUE_STRATEGY} -> Record 

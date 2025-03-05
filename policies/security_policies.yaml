@@ -1,0 +1,51 @@
+---
+# Network Security Compliance Policies
+policies:
+  - name: "Secure NTP Configuration"
+    description: "Ensures that NTP is configured with proper servers and authentication"
+    severity: "medium"
+    conditions:
+      device_types: ["cisco_ios", "cisco_nxos"]
+      ntp:
+        required_servers: ["10.1.1.1", "10.1.1.2"]
+        require_authentication: true
+
+  - name: "Secure SNMP Configuration"
+    description: "Ensures that SNMP is configured securely without default community strings"
+    severity: "high"
+    conditions:
+      device_types: ["cisco_ios", "cisco_nxos", "juniper_junos"]
+      snmp:
+        forbidden_communities: ["public", "private", "community"]
+        require_location: true
+        require_contact: true
+
+  - name: "Secure User Authentication"
+    description: "Ensures that user accounts have appropriate privilege levels"
+    severity: "critical"
+    conditions:
+      device_types: ["cisco_ios", "cisco_nxos"]
+      users:
+        forbidden: ["admin", "administrator", "root"]
+        minimum_privilege: 15
+
+  - name: "Proper Logging Configuration"
+    description: "Ensures that logging is configured with appropriate levels and servers"
+    severity: "medium"
+    conditions:
+      device_types: ["cisco_ios", "cisco_nxos"]
+      logging:
+        required_servers: ["10.2.2.2"]
+        minimum_levels:
+          console: "informational"
+          buffer: "debugging"
+          trap: "warnings"
+
+  - name: "AAA Configuration"
+    description: "Ensures that AAA is properly configured with TACACS+"
+    severity: "high"
+    conditions:
+      device_types: ["cisco_ios", "cisco_nxos"]
+      aaa:
+        require_tacacs: true
+        required_auth_methods: ["group tacacs+", "local"] 
